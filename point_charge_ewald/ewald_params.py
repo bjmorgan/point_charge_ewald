@@ -14,3 +14,4 @@ class Ewald_Params():
     @classmethod
     def default( cls, cell ):
         return cls( etainpt = 5.6, rcut = 15.0, conv1 = 1.0e-7, convfac = 0.1 , cell = cell )
+
