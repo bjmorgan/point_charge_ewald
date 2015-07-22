@@ -4,8 +4,6 @@ from point_charge_ewald.ewald import boxreset
 from point_charge_ewald.site import Site
 from point_charge_ewald.general import ener_fortran
 
-import vasppy.poscar as poscar
-
 from random import choice
 import copy
 
