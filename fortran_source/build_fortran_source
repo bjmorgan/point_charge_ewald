@@ -1,0 +1,5 @@
+#! /bin/bash
+
+f2py3 -c --opt=-O2 -m ewald ener.f90 rgdrecipE.f90 rgdrealE.f90 erfunc.f90 dcell.f90 invert.f90 boxreset.f90 kset.f90 accept_move.f90
+mv ewald.cpython-34m.so ../point_charge_ewald/
+
