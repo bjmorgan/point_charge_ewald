@@ -5,6 +5,7 @@ from point_charge_ewald.site import Site
 from point_charge_ewald.general import ener_fortran
 
 from random import choice
+from collections import Counter
 import copy
 
 class Cell():
@@ -78,7 +79,7 @@ class Cell():
 
     @property
     def species_numbers( self ):
-        return { k: len(v) for k,v in self.sites_by_label.items() }
+        return Counter( [ site.occupied_by.label for site in self.occupied_sites ] )
 
     def write_xyz( self, filename, title = 'Title' ):
         with open( filename, 'w' ) as f:
