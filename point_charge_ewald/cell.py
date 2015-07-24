@@ -74,8 +74,12 @@ class Cell():
         return sorted( self.occupied_sites, key=lambda x: x.occupied_by.label )
 
     @property
-    def species_labels( self ):
+    def site_labels( self ):
         return [ label for label in self.sites_by_label ]
+
+    @property
+    def species_labels( self ):
+        return sorted( set( [ site.occupied_by.label for site in self.occupied_sites ] )  )
 
     @property
     def species_numbers( self ):
