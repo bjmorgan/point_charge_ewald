@@ -99,11 +99,17 @@ class Cell():
             for row in self.fullh.transpose(): # WARNING ! If this is *not* orthorhombic, check the row / column convention
                 f.write( ' '.join( [ str( f ) for f in row ] ) + "\n" )
             f.write( ' '.join( self.species_labels ) + "\n" )
-            f.write( ' '.join( [ str(n) for n in self.species_numbers.values() ] ) + "\n" )
-            f.write( "Cartesian\n" )
+            f.write( ' '.join( [ str( self.species_numbers[ l ] ) for l in self.species_labels ] ) + "\n" )
+            f.write( "Direct\n" )
             for site in self.sorted_occupied_sites:
-                f.write( ' '.join( [ str(f) for f in site.r ] ) + "\n" )
+                f.write( ' '.join( [ str(f) for f in self.fractional( site.r ) ] ) + "\n" )
         
     def coulomb_energy( self, ewald_params ):
         return ener_fortran( self, ewald_params )
+
+    # def cartesian( self, r ):
+    #     pass
+
+    def fractional( self, r ):
+        return r / self.boxlen
  
